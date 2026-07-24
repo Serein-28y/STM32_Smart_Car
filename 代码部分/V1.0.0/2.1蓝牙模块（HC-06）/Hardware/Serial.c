@@ -1,6 +1,6 @@
 #include "stm32f10x.h"   // Device header
 #include "stdio.h"
-
+#include "Car.h"
 uint8_t Serial_RxData;
 uint8_t Serial_RxFlag;
 void Serial_Init(void)
@@ -120,6 +120,18 @@ void USART1_IRQHandler(void)   //中断函数
 	{
 		Serial_RxData=USART_ReceiveData(USART1);
 		Serial_RxFlag=1;
+		switch(Serial_RxData)  
+			{
+				case 'F': Car_Forward(SPEED_MEDIUM); break;
+				case 'B': Car_Backward(SPEED_MEDIUM); break;
+				case 'L': Car_TurnLeft(SPEED_MEDIUM); break;
+				case 'R': Car_TurnRight(SPEED_MEDIUM); break;
+				case 'A': Car_SpinLeft(SPEED_MEDIUM); break;
+				case 'D': Car_SpinRight(SPEED_MEDIUM); break;
+				case 'S': Car_Stop(); break;
+				case '1': Car_SetSpeed(SPEED_MEDIUM, SPEED_MEDIUM); break;
+				default: Car_Stop(); break;
+			}
 		USART_ClearITPendingBit(USART1,USART_FLAG_RXNE);
 	
 	}
