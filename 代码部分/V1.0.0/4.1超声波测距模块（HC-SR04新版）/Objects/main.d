@@ -29,7 +29,6 @@
 .\objects\main.o: .\Library\stm32f10x_wwdg.h
 .\objects\main.o: .\Library\misc.h
 .\objects\main.o: .\System\Delay.h
-.\objects\main.o: .\Hardware\OLED.h
 .\objects\main.o: .\Hardware\Serial.h
 .\objects\main.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: .\Hardware\Car.h
