@@ -8,8 +8,8 @@ uint8_t KeyNum;
 
 int main(void)
 {
-	OLED_Init();
-	Key_Init();
+	
+	
 	Car_Init();
 	Serial_Init();
 	

@@ -4,7 +4,7 @@
 #include "stm32f10x.h"
 
 #define SPEED_LOW     30
-#define SPEED_MEDIUM  60
+#define SPEED_MEDIUM  75
 #define SPEED_HIGH    90
 #define SPEED_MAX     100
 
