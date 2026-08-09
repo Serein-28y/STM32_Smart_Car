@@ -1,4 +1,4 @@
-  #include "stm32f10x.h"
+#include "stm32f10x.h"
 #include "Delay.h"
 #include "Car.h"
 #include "Servo.h"
@@ -163,11 +163,11 @@ void Avoid_Run(void)
 
 	/* 正常行驶时只测正前方。 */
 	Servo_SetAngle(AVOID_SERVO_ANGLE);
-	frontValid = Avoid_MeasureAverage(&Avoid_Distance);
+	frontValid = Avoid_MeasureAverage(&Avoid_Distance);//测距然后判断是否有障碍物
 	if(frontValid == 0)
 	{
 		Car_Stop();
-		return;
+		return;					//结束Avoid_Run
 	}
 
 	if(Avoid_Distance > AVOID_DISTANCE)
@@ -187,8 +187,8 @@ void Avoid_Run(void)
 		Car_Stop();
 
 		/* 扫描结束时舵机已立即回到90度，再进行方向决策。 */
-		Avoid_ScanSides(&leftDistance, &rightDistance);
-		turnDirection = Avoid_SelectTurn(leftDistance, rightDistance);
+		Avoid_ScanSides(&leftDistance, &rightDistance);       //舵机左右扫描记录讲数据存到到数组里面
+		turnDirection = Avoid_SelectTurn(leftDistance, rightDistance);//判断转向
 		if(turnDirection != AVOID_TURN_NONE)
 		{
 			break;
@@ -196,5 +196,5 @@ void Avoid_Run(void)
 	}
 
 	/* 至少一侧打开后，原地转约90度；舵机已经提前回到正前方。 */
-	Avoid_Turn(turnDirection, AVOID_TURN_90_TIME);
+	Avoid_Turn(turnDirection, AVOID_TURN_90_TIME);					//执行转向动作
 }

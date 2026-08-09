@@ -4,11 +4,13 @@
 #include "stm32f10x.h"
 #include "Car.h"
 
-#define AVOID_DISTANCE           26      /* 前方触发避障的距离，单位：cm */
+#define AVOID_DISTANCE           26      /* 前方触发避障的距离，单位：cm */  
+//经调试发现从执行停车程序到实际停车中刹车距离为9+2=11cm的误差
+
 #define AVOID_SIDE_DISTANCE      40      /* 左右方向可通行的最小距离，单位：cm */
 #define AVOID_SIDE_DIFF          20      /* 左右距离差超过此值时优先走更宽的一侧，单位：cm */
 
-#define AVOID_MEASURE_TIME       150     /* 两次超声波测量之间的等待时间，单位：ms */
+#define AVOID_MEASURE_TIME       150     /* 两次超声波测量之间的等待时间（至少60ms），单位：ms */
 #define AVOID_SERVO_WAIT_TIME    250     /* 舵机转到扫描角度后的稳定等待时间，单位：ms */
 #define AVOID_MEASURE_COUNT      2       /* 每个方向的测量次数，最后取有效值平均值 */
 #define AVOID_STOP_TIME          300     /* 发现障碍后停车稳定时间，单位：ms */
