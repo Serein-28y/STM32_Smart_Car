@@ -10,7 +10,7 @@ int main()
 	Car_Init();
 	Serial_Init();
 	Servo_Init();
-	Servo_SetAngle(90);
+	Servo_SetAngle(AVOID_SERVO_ANGLE);
 	HC_SR04_Init();
 	Avoid_Init();
 	

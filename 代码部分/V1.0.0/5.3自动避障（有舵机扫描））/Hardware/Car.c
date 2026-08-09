@@ -1,4 +1,5 @@
 #include "stm32f10x.h"
+#include "Car.h"
 #include "Motor.h"
 
 static int16_t g_LeftSpeed = 0;
@@ -34,7 +35,16 @@ void Car_Stop(void)
 
 void Car_Forward(uint8_t speed)
 {
-	Car_SetSpeed(speed, speed);
+	int16_t leftSpeed = (int16_t)speed + CAR_FORWARD_LEFT_TRIM;
+	int16_t rightSpeed = (int16_t)speed + CAR_FORWARD_RIGHT_TRIM;
+
+	/* 限幅，避免补偿后超过有效 PWM 范围。 */
+	if(leftSpeed < 0) leftSpeed = 0;
+	if(leftSpeed > SPEED_MAX) leftSpeed = SPEED_MAX;
+	if(rightSpeed < 0) rightSpeed = 0;
+	if(rightSpeed > SPEED_MAX) rightSpeed = SPEED_MAX;
+
+	Car_SetSpeed(leftSpeed, rightSpeed);
 }
 
 void Car_Backward(uint8_t speed)

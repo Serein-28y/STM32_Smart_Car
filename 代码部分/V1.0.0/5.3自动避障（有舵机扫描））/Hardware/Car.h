@@ -7,6 +7,11 @@
 #define SPEED_MEDIUM  50
 #define SPEED_HIGH    90
 #define SPEED_MAX     100
+#define SPEED_BACKWARD 70  /* 自动避障后退速度，范围建议：0~100 */
+
+/* 直行时左右轮的开环补偿值 */
+#define CAR_FORWARD_LEFT_TRIM   4 
+#define CAR_FORWARD_RIGHT_TRIM  0
 
 void Car_Init(void);
 void Car_Forward(uint8_t speed);
