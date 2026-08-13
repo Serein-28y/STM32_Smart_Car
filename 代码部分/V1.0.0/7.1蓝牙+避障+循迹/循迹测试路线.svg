@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L0,8 L11,4 z" fill="#1677ff"/>
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="5" stdDeviation="8" flood-color="#000" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1000" fill="#eef2f5"/>
+  <text x="800" y="58" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="34" font-weight="700" fill="#17212b">四路 TCRT5000 下一阶段循迹测试路线</text>
+  <text x="800" y="94" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="19" fill="#52616f">适用于当前 6.2 状态表程序：白底0、黑线1、1111停车</text>
+
+  <!-- 2.0 m × 1.2 m test board -->
+  <rect x="100" y="135" width="1400" height="735" rx="8" fill="#fff" stroke="#aeb8c2" stroke-width="3" filter="url(#shadow)"/>
+  <text x="118" y="168" font-family="Microsoft YaHei, sans-serif" font-size="18" fill="#667580">建议白色哑光场地：200 cm × 120 cm</text>
+
+  <!-- Main black line: straight -> large-radius 90 degree bend -> S curve -> finish straight -->
+  <path d="M210 770
+           L665 770
+           C790 770 865 695 865 570
+           L865 535
+           C865 445 1025 445 1025 355
+           C1025 265 865 265 865 175"
+        fill="none" stroke="#111" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Direction arrows -->
+  <path d="M280 735 L555 735" fill="none" stroke="#1677ff" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M735 735 C800 710 825 650 825 585" fill="none" stroke="#1677ff" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M900 515 C930 475 985 460 990 410" fill="none" stroke="#1677ff" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M990 325 C970 290 915 285 900 230" fill="none" stroke="#1677ff" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- Start box -->
+  <rect x="175" y="724" width="90" height="92" fill="none" stroke="#16a34a" stroke-width="4" stroke-dasharray="9 7"/>
+  <text x="220" y="710" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="21" font-weight="700" fill="#16803c">起点</text>
+  <text x="220" y="846" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="16" fill="#52616f">车头向右</text>
+
+  <!-- Finish transverse line -->
+  <line x1="805" y1="190" x2="925" y2="190" stroke="#111" stroke-width="22" stroke-linecap="square"/>
+  <text x="975" y="184" font-family="Microsoft YaHei, sans-serif" font-size="21" font-weight="700" fill="#d92d20">终点横线</text>
+  <text x="975" y="211" font-family="Microsoft YaHei, sans-serif" font-size="17" fill="#d92d20">四路=1111，立即停车</text>
+
+  <!-- Zone labels -->
+  <g font-family="Microsoft YaHei, sans-serif">
+    <circle cx="430" cy="770" r="25" fill="#1677ff"/>
+    <text x="430" y="778" text-anchor="middle" font-size="22" font-weight="700" fill="#fff">1</text>
+    <text x="405" y="690" font-size="22" font-weight="700" fill="#17212b">直线稳定段</text>
+    <text x="405" y="721" font-size="17" fill="#52616f">约 60～70 cm</text>
+
+    <circle cx="775" cy="675" r="25" fill="#1677ff"/>
+    <text x="775" y="683" text-anchor="middle" font-size="22" font-weight="700" fill="#fff">2</text>
+    <text x="590" y="565" font-size="22" font-weight="700" fill="#17212b">平滑90°方向变化</text>
+    <text x="590" y="596" font-size="17" fill="#52616f">圆弧半径 R≈35～40 cm</text>
+    <text x="590" y="623" font-size="17" fill="#52616f">不是尖角，现有四路可测试</text>
+
+    <circle cx="950" cy="400" r="25" fill="#1677ff"/>
+    <text x="950" y="408" text-anchor="middle" font-size="22" font-weight="700" fill="#fff">3</text>
+    <text x="1090" y="347" font-size="22" font-weight="700" fill="#17212b">S弯换向段</text>
+    <text x="1090" y="378" font-size="17" fill="#52616f">左右修正连续切换</text>
+    <text x="1090" y="405" font-size="17" fill="#52616f">观察是否摆动或丢线</text>
+
+    <circle cx="865" cy="245" r="25" fill="#1677ff"/>
+    <text x="865" y="253" text-anchor="middle" font-size="22" font-weight="700" fill="#fff">4</text>
+    <text x="1130" y="257" font-size="22" font-weight="700" fill="#17212b">终点识别</text>
+    <text x="1130" y="288" font-size="17" fill="#52616f">验证1111停车是否可靠</text>
+  </g>
+
+  <!-- Dimension guides -->
+  <line x1="100" y1="905" x2="1500" y2="905" stroke="#768692" stroke-width="2"/>
+  <line x1="100" y1="895" x2="100" y2="915" stroke="#768692" stroke-width="2"/>
+  <line x1="1500" y1="895" x2="1500" y2="915" stroke="#768692" stroke-width="2"/>
+  <text x="800" y="934" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="19" fill="#52616f">200 cm</text>
+  <line x1="1540" y1="135" x2="1540" y2="870" stroke="#768692" stroke-width="2"/>
+  <line x1="1530" y1="135" x2="1550" y2="135" stroke="#768692" stroke-width="2"/>
+  <line x1="1530" y1="870" x2="1550" y2="870" stroke="#768692" stroke-width="2"/>
+  <text x="1570" y="515" text-anchor="middle" transform="rotate(90 1570 515)" font-family="Microsoft YaHei, sans-serif" font-size="19" fill="#52616f">120 cm</text>
+
+  <g font-family="Microsoft YaHei, sans-serif" font-size="17" fill="#344450">
+    <text x="110" y="975">贴线要求：黑色哑光胶带宽18～20 mm；所有弯道连续圆滑；成功后将整条路线左右镜像，再测试另一方向。</text>
+  </g>
+</svg>
