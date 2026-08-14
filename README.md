@@ -443,7 +443,7 @@ main.c
 
 ### 观看地址
 
-[点击观看 STM32 智能小车三功能整合演示视频（哔哩哔哩）](https://www.bilibili.com/video/BV1EUgN63Ejc/)
+[点击观看 STM32 智能小车三功能整合演示视频（哔哩哔哩）](https://www.bilibili.com/video/BV1uMgK6bE7M/)
 
 <a id="problems"></a>
 
