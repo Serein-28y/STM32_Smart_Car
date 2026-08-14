@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1120" viewBox="0 0 1400 1120">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#46657f"/>
+    </marker>
+    <style>
+      .title{font:700 42px "Microsoft YaHei",sans-serif;fill:#17324d}
+      .text{font:500 27px "Microsoft YaHei",sans-serif;fill:#17324d;text-anchor:middle;dominant-baseline:middle}
+      .small{font:400 23px "Microsoft YaHei",sans-serif;fill:#46657f;text-anchor:middle}
+      .node{fill:#eef6fc;stroke:#4c8fbd;stroke-width:3}
+      .decision{fill:#fff7df;stroke:#d49b2a;stroke-width:3}
+      .action{fill:#edf8ef;stroke:#4b9b62;stroke-width:3}
+      .stop{fill:#fff0f0;stroke:#c85b5b;stroke-width:3}
+      .line{fill:none;stroke:#46657f;stroke-width:3;marker-end:url(#arrow)}
+      .label{font:500 22px "Microsoft YaHei",sans-serif;fill:#46657f}
+    </style>
+  </defs>
+  <rect width="1400" height="1120" fill="#ffffff"/>
+  <text x="700" y="62" class="title" text-anchor="middle">四路 TCRT5000 循迹算法流程</text>
+  <rect x="490" y="100" width="420" height="76" rx="38" class="node"/>
+  <text x="700" y="138" class="text">进入自动循迹模式</text>
+  <path d="M700 176V220" class="line"/>
+  <rect x="430" y="220" width="540" height="88" rx="14" class="node"/>
+  <text x="700" y="264" class="text">读取 L2、L1、R1、R2 四路状态</text>
+  <path d="M700 308V350" class="line"/>
+  <polygon points="700,350 970,440 700,530 430,440" class="decision"/>
+  <text x="700" y="420" class="text">传感器状态</text>
+  <text x="700" y="460" class="small">1 表示检测到黑线</text>
+
+  <path d="M430 440H225V575" class="line"/>
+  <text x="305" y="422" class="label">0110</text>
+  <rect x="70" y="575" width="310" height="92" rx="14" class="action"/>
+  <text x="225" y="608" class="text">轨迹居中</text>
+  <text x="225" y="645" class="small">左右轮同速直行</text>
+
+  <path d="M560 500L465 575" class="line"/>
+  <text x="468" y="520" class="label">左侧状态</text>
+  <rect x="405" y="575" width="310" height="116" rx="14" class="action"/>
+  <text x="560" y="607" class="text">向左修正</text>
+  <text x="560" y="644" class="small">左轮减速，右轮加速</text>
+  <text x="560" y="675" class="small">记录最后方向为左</text>
+
+  <path d="M840 500L935 575" class="line"/>
+  <text x="865" y="520" class="label">右侧状态</text>
+  <rect x="770" y="575" width="310" height="116" rx="14" class="action"/>
+  <text x="925" y="607" class="text">向右修正</text>
+  <text x="925" y="644" class="small">左轮加速，右轮减速</text>
+  <text x="925" y="675" class="small">记录最后方向为右</text>
+
+  <path d="M970 440H1185V575" class="line"/>
+  <text x="1052" y="422" class="label">0000</text>
+  <rect x="1035" y="575" width="310" height="116" rx="14" class="action"/>
+  <text x="1190" y="607" class="text">丢线搜索</text>
+  <text x="1190" y="644" class="small">按上次偏移方向搜线</text>
+  <text x="1190" y="675" class="small">无历史方向则停车</text>
+
+  <path d="M700 530V740" class="line"/>
+  <text x="718" y="565" class="label">1111 或其他状态</text>
+  <rect x="530" y="740" width="340" height="100" rx="14" class="stop"/>
+  <text x="700" y="774" class="text">安全停车</text>
+  <text x="700" y="813" class="small">横线或无法判断的组合</text>
+
+  <path d="M225 667V925H660" class="line"/>
+  <path d="M560 691V925H660" class="line"/>
+  <path d="M925 691V925H740" class="line"/>
+  <path d="M1190 691V925H740" class="line"/>
+  <rect x="515" y="885" width="370" height="80" rx="40" class="node"/>
+  <text x="700" y="925" class="text">约 10 ms 后重新检测</text>
+  <path d="M700 885V860H1030V264H970" class="line"/>
+</svg>

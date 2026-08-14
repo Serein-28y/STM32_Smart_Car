@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1260" viewBox="0 0 1400 1260">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#46657f"/>
+    </marker>
+    <style>
+      .title{font:700 42px "Microsoft YaHei",sans-serif;fill:#17324d}
+      .text{font:500 26px "Microsoft YaHei",sans-serif;fill:#17324d;text-anchor:middle;dominant-baseline:middle}
+      .small{font:400 22px "Microsoft YaHei",sans-serif;fill:#46657f;text-anchor:middle}
+      .node{fill:#eef6fc;stroke:#4c8fbd;stroke-width:3}
+      .decision{fill:#fff7df;stroke:#d49b2a;stroke-width:3}
+      .action{fill:#edf8ef;stroke:#4b9b62;stroke-width:3}
+      .stop{fill:#fff0f0;stroke:#c85b5b;stroke-width:3}
+      .line{fill:none;stroke:#46657f;stroke-width:3;marker-end:url(#arrow)}
+      .label{font:500 22px "Microsoft YaHei",sans-serif;fill:#46657f}
+    </style>
+  </defs>
+  <rect width="1400" height="1260" fill="#ffffff"/>
+  <text x="700" y="62" class="title" text-anchor="middle">HC-SR04 + SG90 自动避障算法流程</text>
+  <rect x="490" y="100" width="420" height="76" rx="38" class="node"/>
+  <text x="700" y="138" class="text">进入自动避障模式</text>
+  <path d="M700 176V215" class="line"/>
+  <rect x="470" y="215" width="460" height="86" rx="14" class="node"/>
+  <text x="700" y="246" class="text">舵机朝向 90° 正前方</text>
+  <text x="700" y="278" class="small">两次有效测距取平均值</text>
+  <path d="M700 301V340" class="line"/>
+  <polygon points="700,340 945,420 700,500 455,420" class="decision"/>
+  <text x="700" y="406" class="text">前方距离有效且</text>
+  <text x="700" y="442" class="text">大于 26 cm？</text>
+
+  <path d="M455 420H235V540" class="line"/>
+  <text x="340" y="402" class="label">是</text>
+  <rect x="80" y="540" width="310" height="86" rx="14" class="action"/>
+  <text x="235" y="583" class="text">继续向前行驶</text>
+  <path d="M235 626V1120H660" class="line"/>
+
+  <path d="M945 420H1160V540" class="line"/>
+  <text x="1045" y="402" class="label">测距无效</text>
+  <rect x="1005" y="540" width="310" height="86" rx="14" class="stop"/>
+  <text x="1160" y="583" class="text">安全停车</text>
+  <path d="M1160 626V1120H740" class="line"/>
+
+  <path d="M700 500V545" class="line"/>
+  <text x="720" y="525" class="label">否，触发避障</text>
+  <rect x="505" y="545" width="390" height="100" rx="14" class="action"/>
+  <text x="700" y="578" class="text">停车 300 ms</text>
+  <text x="700" y="616" class="small">随后后退 200 ms</text>
+  <path d="M700 645V685" class="line"/>
+  <rect x="450" y="685" width="500" height="116" rx="14" class="node"/>
+  <text x="700" y="716" class="text">舵机扫描左右两侧</text>
+  <text x="700" y="752" class="small">左侧 150°，右侧 30°</text>
+  <text x="700" y="783" class="small">扫描完成后回到 90°</text>
+  <path d="M700 801V840" class="line"/>
+  <polygon points="700,840 950,925 700,1010 450,925" class="decision"/>
+  <text x="700" y="906" class="text">至少一侧距离</text>
+  <text x="700" y="942" class="text">大于 40 cm？</text>
+
+  <path d="M450 925H270V740H450" class="line"/>
+  <text x="290" y="905" class="label">否：继续后退后重扫</text>
+
+  <path d="M950 925H1110V1000" class="line"/>
+  <text x="1000" y="905" class="label">是</text>
+  <rect x="950" y="1000" width="320" height="112" rx="14" class="action"/>
+  <text x="1110" y="1030" class="text">选择转向方向</text>
+  <text x="1110" y="1064" class="small">优先选择更开阔一侧</text>
+  <text x="1110" y="1095" class="small">距离接近时左右交替</text>
+  <path d="M950 1056H820" class="line"/>
+  <rect x="500" y="1015" width="320" height="82" rx="14" class="action"/>
+  <text x="660" y="1040" class="text">原地转向约 90°</text>
+  <text x="660" y="1074" class="small">当前转向时间约 600 ms</text>
+
+  <rect x="515" y="1120" width="370" height="80" rx="40" class="node"/>
+  <text x="700" y="1160" class="text">重新检测前方距离</text>
+  <path d="M700 1120V1097" class="line"/>
+  <path d="M700 1200V1230H1330V258H930" class="line"/>
+</svg>
