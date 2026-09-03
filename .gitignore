@@ -1,0 +1,26 @@
+# --- Keil MDK build output ---
+Objects/
+Listings/
+DebugConfig/
+*.o
+*.axf
+*.crf
+*.dep
+*.d
+*.lnp
+*.lst
+*.map
+*.htm
+*.build_log.htm
+
+# --- EIDE / VS Code ---
+EIDE/
+.vscode/
+
+# --- Keil user GUI state ---
+*.uvguix.*
+*.uvgui.*
+
+# --- Misc build / backup ---
+*.bak
+*.tmp
